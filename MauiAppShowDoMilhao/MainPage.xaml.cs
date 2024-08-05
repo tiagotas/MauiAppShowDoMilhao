@@ -35,12 +35,11 @@ namespace MauiAppShowDoMilhao
 
         private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            RadioButton selecionado = (RadioButton)sender;
-            Alternativa resposta = selecionado.BindingContext as Alternativa;
+            //RadioButton selecionado = (RadioButton)sender;            
 
             //resposta_correta = e.Value;
 
-            DisplayAlert("Respondeu:", resposta?.Correta.ToString(), "OK");
+            //DisplayAlert("Respondeu:", selecionado?.Value?.ToString(), "OK");
         }
         
     }
