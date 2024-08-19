@@ -14,7 +14,7 @@ namespace MauiAppShowDoMilhao
             this.BindingContext = App.getRandomPerguntaFacil();
         }
 
-        private void Button_Clicked_Proxima(object sender, EventArgs e)
+        private async void Button_Clicked_Proxima(object sender, EventArgs e)
         {
             bool acertou = false;
             string resp = "";
@@ -57,7 +57,7 @@ namespace MauiAppShowDoMilhao
             }
 
             if (acertou) {
-                DisplayAlert("ACERTOU!", resp, "OK");
+                await DisplayAlert("ACERTOU!", resp, "OK");
                 this.BindingContext = App.getRandomPerguntaFacil();
 
             } else

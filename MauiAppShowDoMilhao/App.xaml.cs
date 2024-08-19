@@ -165,16 +165,58 @@ namespace MauiAppShowDoMilhao
 
         };
 
+        static List<Pergunta> perguntas_medias = new() { };
+
+        static List<Pergunta> perguntas_dificeis = new() { };
+
+        static List<Pergunta> perguntas_finais = new() { };
+
         /**
-         * Sorteia uma pergunta entre 1 e 20
+         * Sorteia uma pergunta fácil entre 1 e 20
          */
         public static Pergunta getRandomPerguntaFacil()
         {
             Random r = new Random();
-            
-            int sorteado = r.Next(1, 13);
+
+            int sorteado = r.Next(1, perguntas_faceis.Count);
 
             return perguntas_faceis[sorteado];
+        }
+
+        /**
+         * Sorteia uma pergunta média entre 21 e 41
+         */
+        public static Pergunta getRandomPerguntaMedia()
+        {
+            Random r = new Random();
+
+            int sorteado = r.Next(1, perguntas_medias.Count);
+
+            return perguntas_medias[sorteado];
+        }
+
+        /**
+         * Sorteia uma pergunta dificil entre 1 e 20
+         */
+        public static Pergunta getRandomPerguntaDificil()
+        {
+            Random r = new Random();
+
+            int sorteado = r.Next(1, perguntas_dificeis.Count);
+
+            return perguntas_dificeis[sorteado];
+        }
+
+        /**
+         * Sorteia uma pergunta dificil entre 1 e 20
+         */
+        public static Pergunta getRandomPerguntaFinal()
+        {
+            Random r = new Random();
+
+            int sorteado = r.Next(1, perguntas_finais.Count);
+
+            return perguntas_finais[sorteado];
         }
 
         public App()
