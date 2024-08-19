@@ -36,15 +36,24 @@
 
         <Label Text="{Binding Enunciado}" />
 
-        <StackLayout RadioButtonGroup.GroupName="resposta">
-            <RadioButton CheckedChanged="RadioButton_CheckedChanged" Content="{Binding Path=Alternativas[0].Descricao}" Value="{Binding Path=Alternativas[0].Correta}" />
-            <RadioButton CheckedChanged="RadioButton_CheckedChanged" Content="{Binding Path=Alternativas[1].Descricao}" Value="{Binding Path=Alternativas[1].Correta}" />
-            <RadioButton CheckedChanged="RadioButton_CheckedChanged" Content="{Binding Path=Alternativas[2].Descricao}" Value="{Binding Path=Alternativas[2].Correta}" />
-            <RadioButton CheckedChanged="RadioButton_CheckedChanged" Content="{Binding Path=Alternativas[3].Descricao}" Value="{Binding Path=Alternativas[3].Correta}" />
-        </StackLayout>
-        
+        <StackLayout>
+            <RadioButton x:Name="alt0" 
+                         Content="{Binding Path=Alternativas[0].Descricao}" 
+                         Value="{Binding Path=Alternativas[0].Correta}" />
 
-        
+            <RadioButton x:Name="alt1" 
+                         Content="{Binding Path=Alternativas[1].Descricao}" 
+                         Value="{Binding Path=Alternativas[1].Correta}" />
+
+            <RadioButton x:Name="alt2" 
+                         Content="{Binding Path=Alternativas[2].Descricao}" 
+                         Value="{Binding Path=Alternativas[2].Correta}" />
+
+
+            <RadioButton x:Name="alt3" 
+                         Content="{Binding Path=Alternativas[3].Descricao}" 
+                         Value="{Binding Path=Alternativas[3].Correta}" />
+        </StackLayout>
 
         <StackLayout Orientation="Horizontal">
             <Button Text="Parar" />

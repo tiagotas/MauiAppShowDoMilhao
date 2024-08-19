@@ -4,14 +4,10 @@ namespace MauiAppShowDoMilhao
 {
     public partial class MainPage : ContentPage
     {
-        bool resposta_correta = false;
-
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        
+        }        
 
         private void Button_Clicked(object sender, EventArgs e)
         {
@@ -20,27 +16,54 @@ namespace MauiAppShowDoMilhao
 
         private void Button_Clicked_Proxima(object sender, EventArgs e)
         {
-            
-            // https://stackoverflow.com/questions/74127902/2-radio-button-group-do-not-work-in-maui-using-community-toolkit-mvvm
+            bool acertou = false;
+            string resp = "";
+            bool valor;
 
-            /*if (resposta_correta)
+            if (alt0.IsChecked)
             {
+                if ( (bool) alt0.Value)
+                {
+                    acertou = true;
+                    resp = alt0.Content.ToString();
+                }
+            }
+
+            if (alt1.IsChecked)
+            {
+                if ( (bool) alt1.Value)
+                {
+                    acertou = true;
+                    resp = alt1.Content.ToString();
+                }
+            }
+
+            if (alt2.IsChecked)
+            {
+                if ((bool) alt2.Value)
+                {
+                    acertou = true;
+                    resp = alt2.Content.ToString();
+                }
+            }
+
+            if (alt3.IsChecked)
+            {
+                if ( (bool) alt3.Value)
+                {
+                    acertou = true;
+                    resp = alt3.Content.ToString();
+                }
+            }
+
+            if (acertou) {
+                DisplayAlert("ACERTOU!", resp, "OK");
                 this.BindingContext = App.getRandomPerguntaFacil();
-                DisplayAlert("Acertou!", "Certa Resposta!", "Próxima");
+
             } else
             {
-                DisplayAlert("Errou!", "Certa Errada!", "Tentar Novamente");
-            } */          
-        }
-
-        private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            //RadioButton selecionado = (RadioButton)sender;            
-
-            //resposta_correta = e.Value;
-
-            //DisplayAlert("Respondeu:", selecionado?.Value?.ToString(), "OK");
-        }
-        
+                DisplayAlert("ERROU!", "Você perdeu", "OK");
+            }
+        }        
     }
 }
