@@ -873,7 +873,7 @@ namespace MauiAppShowDoMilhao
 
             while (true)
             {
-                int sorteado = r.Next(61, 63);
+                int sorteado = r.Next(0, 19);
 
                 pergunta_sorteada = perguntas_finais[sorteado];
                 

@@ -88,9 +88,13 @@ namespace MauiAppShowDoMilhao
                 case 15:
                     track = "15.wav";
                 break;
+                case 16:
+                    track = "16.wav";
+                break;
             }
 
-            AudioManager.Current.CreatePlayer(FileSystem.OpenAppPackageFileAsync(track).Result).Play();
+            AudioManager.Current.CreatePlayer(
+                FileSystem.OpenAppPackageFileAsync(track).Result).Play();
         }
 
         private async void Button_Clicked_Proxima(object sender, EventArgs e)
@@ -135,7 +139,11 @@ namespace MauiAppShowDoMilhao
                 }
             }
 
-            if (acertou) {
+            if (acertou) 
+            {
+                Stream track = FileSystem.OpenAppPackageFileAsync("parabens.wav").Result;
+                AudioManager.Current.CreatePlayer(track).Play();
+
                 await DisplayAlert("ACERTOU!", resp, "OK");
                 pergunta_count++;
                 toca_som();
@@ -143,6 +151,9 @@ namespace MauiAppShowDoMilhao
 
             } else
             {
+                Stream track = FileSystem.OpenAppPackageFileAsync("errou.wav").Result;
+                AudioManager.Current.CreatePlayer(track).Play();
+
                 await DisplayAlert("ERROU!", "Você perdeu", "OK");
                 premio = 0;
                 pergunta_count = 1;
@@ -152,6 +163,7 @@ namespace MauiAppShowDoMilhao
 
         void avanca_pergunta()
         {
+            // Perguntas de 1.000 à 5.000
             if (pergunta_count <= 5)
             {
                 premio = premio + 1000;
@@ -159,18 +171,44 @@ namespace MauiAppShowDoMilhao
                 lbl_nivel.Text = "Fácil";
             }
 
-            if (pergunta_count > 5 && pergunta_count <= 10)
+            // Pergunta que vale R$ 10.000,00
+            if(pergunta_count == 6)
+            {
+                premio = 10000;
+                this.BindingContext = App.getRandomPerguntaMedia();
+                lbl_nivel.Text = "Média";
+            }
+
+            // Perguntas de 20.000 à 50.000
+            if (pergunta_count > 6 && pergunta_count <= 10)
             {
                 premio = premio + 10000;
                 this.BindingContext = App.getRandomPerguntaMedia();
                 lbl_nivel.Text = "Média";
             }
 
-            if(pergunta_count > 10 && pergunta_count < 15)
+            // Pergunta que vale R$ 100.000,00
+            if (pergunta_count == 11)
+            {
+                premio = 100000;
+                this.BindingContext = App.getRandomPerguntaDificil();
+                lbl_nivel.Text = "Difícil";
+            }
+
+            // Perguntas de 200.000 à 500.000
+            if (pergunta_count > 11 && pergunta_count <= 15)
             {
                 premio = premio + 100000;
                 this.BindingContext = App.getRandomPerguntaDificil();
                 lbl_nivel.Text = "Dificil";
+            }
+
+            // Pergunta que vale R$ 1.000.000,00
+            if (pergunta_count == 16)
+            {
+                premio = 1000000;
+                this.BindingContext = App.getRandomPerguntaFinal();
+                lbl_nivel.Text = "FINAL";
             }
 
             lbl_premio.Text = premio.ToString("C");
