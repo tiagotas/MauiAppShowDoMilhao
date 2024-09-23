@@ -18,10 +18,10 @@ namespace MauiAppShowDoMilhao
             lbl_premio.Text = premio.ToString("C");
             lbl_pergunta_numero.Text = pergunta_count.ToString();
 
-            // Adiciona Som
+            // Adiciona Som de Abertura
             Stream track = FileSystem.OpenAppPackageFileAsync("0.mp3").Result;
             AudioManager.Current.CreatePlayer(track).Play();
-        }        
+        } // Fecha MainPage (método construtor)        
 
         private void toca_som()
         {
